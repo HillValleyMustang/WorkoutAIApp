@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dynamic theme variables */
+:root {
+  --theme-color: #00A0FE;
+  --theme-color-light: #e0f2fe;
+  --theme-color-dark: #0284c7;
+  --theme-shadow: rgba(0, 160, 254, 0.3);
+  --pr-color: #FDB10E;
+}
+
+/* Theme classes for dynamic workout theming */
+body.UpperA-theme { 
+  --theme-color: #00A0FE; 
+  --theme-color-light: #e0f2fe; 
+  --theme-color-dark: #0284c7; 
+  --theme-shadow: rgba(0, 160, 254, 0.3); 
+}
+body.LowerA-theme { 
+  --theme-color: #F61732; 
+  --theme-color-light: #fee2e2; 
+  --theme-color-dark: #dc2626; 
+  --theme-shadow: rgba(246, 23, 50, 0.3); 
+}
+body.UpperB-theme { 
+  --theme-color: #FDB10E; 
+  --theme-color-light: #fff7ed; 
+  --theme-color-dark: #f59e0b; 
+  --theme-shadow: rgba(253, 177, 14, 0.3); 
+}
+body.LowerB-theme { 
+  --theme-color: #169A13; 
+  --theme-color-light: #f0fdf4; 
+  --theme-color-dark: #15803d; 
+  --theme-shadow: rgba(22, 154, 19, 0.3); 
+}
+
+/* Flash animation for saved exercises */
+@keyframes flash-green { 
+  0% { background-color: white; } 
+  50% { background-color: #dcfce7; } 
+  100% { background-color: white; } 
+}
+.flash-save { 
+  animation: flash-green 1s ease-out; 
+}
+
+/* PR glow animation */
+@keyframes pr-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(253, 177, 14, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(253, 177, 14, 0.9);
+  }
+}
+.pr-highlight {
+  border-color: var(--pr-color) !important;
+  animation: pr-glow 1.5s ease-in-out infinite;
+}
+
+:root {
+  --primary-color: hsl(203, 88%, 50%); /* #00A0FE */
+  --secondary-color: hsl(348, 91%, 53%); /* #F61732 */
+  --tertiary-color: hsl(42, 93%, 53%); /* #FDB10E */
+  --quaternary-color: hsl(119, 77%, 35%); /* #169A13 */
+  --pr-color: hsl(42, 93%, 53%); /* #FDB10E */
+  
+  --upper-a-light: hsl(203, 100%, 93%); /* #E0F2FE */
+  --lower-a-light: hsl(0, 86%, 93%); /* #FEE2E2 */
+  --upper-b-light: hsl(38, 100%, 96%); /* #FFF7ED */
+  --lower-b-light: hsl(120, 60%, 97%); /* #F0FDF4 */
+  
+  --background: hsl(210, 20%, 98%);
+  --foreground: hsl(210, 25%, 8%);
+  --surface: hsl(0, 0%, 100%);
+  --border: hsl(210, 30%, 91%);
+  --border-light: hsl(210, 16%, 93%);
+  --text-muted: hsl(210, 14%, 53%);
+  
+  --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+  --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+  --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+  
+  --fitness-shadow: 0 4px 15px hsl(203, 88%, 50% / 0.3);
+  --workout-card-shadow: 0 2px 8px hsl(0 0% 0% / 0.1);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-gray-50 text-foreground;
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(203, 88%, 45%);
+  }
+}
+
+@layer components {
+  .workout-gradient-upper-a {
+    background: linear-gradient(135deg, var(--primary-color) 0%, hsl(203, 88%, 45%) 100%);
+  }
+  
+  .workout-gradient-lower-a {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, hsl(348, 75%, 48%) 100%);
+  }
+  
+  .workout-gradient-upper-b {
+    background: linear-gradient(135deg, var(--tertiary-color) 0%, hsl(42, 92%, 47%) 100%);
+  }
+  
+  .workout-gradient-lower-b {
+    background: linear-gradient(135deg, var(--quaternary-color) 0%, hsl(119, 61%, 32%) 100%);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@layer utilities {
+  .animate-pr-glow {
+    animation: pr-glow 1.5s ease-in-out infinite;
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounce-subtle 0.6s ease-out;
+  }
+}
+
+@keyframes pr-glow {
+  0%, 100% { 
+    box-shadow: 0 0 8px hsl(42, 93%, 53% / 0.5); 
+  }
+  50% { 
+    box-shadow: 0 0 16px hsl(42, 93%, 53% / 0.9); 
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-2px); 
+  }
+}
+
+/* Dynamic theme classes */
+.theme-upper-a {
+  --theme-color: var(--primary-color);
+  --theme-color-light: var(--upper-a-light);
+  --theme-shadow: hsl(203, 88%, 50% / 0.3);
+}
+
+.theme-lower-a {
+  --theme-color: var(--secondary-color);
+  --theme-color-light: var(--lower-a-light);
+  --theme-shadow: hsl(348, 91%, 53% / 0.3);
+}
+
+.theme-upper-b {
+  --theme-color: var(--tertiary-color);
+  --theme-color-light: var(--upper-b-light);
+  --theme-shadow: hsl(42, 93%, 53% / 0.3);
+}
+
+.theme-lower-b {
+  --theme-color: var(--quaternary-color);
+  --theme-color-light: var(--lower-b-light);
+  --theme-shadow: hsl(119, 77%, 35% / 0.3);
+}
